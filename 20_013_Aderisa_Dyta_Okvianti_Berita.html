@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '20_013_Aderisa_Dyta_Okvianti_Berita';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="Crawling_Berita.html" />
+    <link rel="prev" title="Crawling Berita" href="Crawling_Berita.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -170,6 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Crawling_PTA.html">Crawling PTA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Preprocessing_PTA.html">Preprocessing_PTA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modelling_LDA.html">Modelling LDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Crawling_Berita.html">Crawling Berita</a></li>
 </ul>
 
     </div>
@@ -411,10 +412,6 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
-[nltk_data]   Unzipping tokenizers/punkt.zip.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>				Jakarta (ANTARA) - Jaksa penuntut umum (JPU) pada Kejaksaan Agung (Kejagung) RI menuntut Account Director of Integrated Account Departement PT Huawei Tech Investment Mukti Ali selama 6 tahun dan membayar denda Rp500 juta subsider 6 bulan pidana kurungan dalam perkara korupsi BTS 4G Kementerian Komunikasi dan Informatika (Kemenkominfo).
 &quot;Menjatuhkan pidana terhadap terdakwa Mukti Ali selama 6 tahun dikurangi sepenuhnya dengan lamanya terdakwa ditahan dengan perintah agar terdakwa tetap dilakukan penahanan di rutan,&quot; kata jaksa dalam persidangan di Pengadilan Tindak Pidana Korupsi (Tipikor) pada Pengadilan Negeri Jakarta Pusat, Senin.
 Jaksa menyatakan bahwa terdakwa Mukti Ali terbukti secara sah dan meyakinkan bersalah menurut hukum turut serta dalam melakukan tindak pidana korupsi BTS 4G Kementerian Komunikasi dan Informatika (Kemenkominfo).
@@ -433,6 +430,10 @@ Para terdakwa diduga melakukan tindak pidana korupsi penyediaan infrastruktur ba
 Pada surat dakwaan disebutkan bahwa sejumlah pihak mendapat keuntungan dari proyek pembangunan tersebut, yaitu mantan Menteri Kominfo Johnny G. Plate menerima uang sebesar Rp17.848.308.000,00; mantan Direktur Utama Bakti Kominfo Anang Achmad Latif menerima uang Rp5 miliar; dan tenaga ahli Human Development Universitas Indonesia Yohan Suryanto menerima Rp453.608.400,00.
 Selanjutnya, Irwan Hermawan selaku Komisaris PT Solitechmedia Sinergy menerima Rp119 miliar; Windi Purnama selaku Direktur PT Multimedia Berdikari Sejahtera menerima Rp500 juta; Muhammad Yusrizki selaku Direktur PT Basis Utama Prima menerima Rp50 miliar dan 2,5 juta dolar AS; Konsorsium FiberHome PT Telkominfra PT Multi Trans Data (PT MTD) untuk Paket 1 dan 2 menerima Rp2.940.870.824.490,00; Konsorsium Lintasarta Huawei SEI untuk paket 3 menerima Rp1.584.914.620.955,00; dan Konsorsium IBS dan ZTE Paket 4 dan 5 mendapat Rp3.504.518.715.600,00.Pewarta: Rivan Awal LinggaEditor: D.Dj.
 Kliwantoro				COPYRIGHT © ANTARA 2023
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
 </pre></div>
 </div>
 </div>
@@ -1068,7 +1069,7 @@ Cosine Similarity antara Kalimat 14 dan Kalimat 15: 0.0000
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-a1084c49-86e1-4fe1-9d8d-da858a1819d7" class="colab-df-container">
+  <div id="df-2d3c6bb0-933c-4987-8056-c636fde65f00" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1381,7 +1382,7 @@ Cosine Similarity antara Kalimat 14 dan Kalimat 15: 0.0000
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-a1084c49-86e1-4fe1-9d8d-da858a1819d7')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-2d3c6bb0-933c-4987-8056-c636fde65f00')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1433,12 +1434,12 @@ Cosine Similarity antara Kalimat 14 dan Kalimat 15: 0.0000
 
     <script>
       const buttonEl =
-        document.querySelector('#df-a1084c49-86e1-4fe1-9d8d-da858a1819d7 button.colab-df-convert');
+        document.querySelector('#df-2d3c6bb0-933c-4987-8056-c636fde65f00 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-a1084c49-86e1-4fe1-9d8d-da858a1819d7');
+        const element = document.querySelector('#df-2d3c6bb0-933c-4987-8056-c636fde65f00');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1601,7 +1602,7 @@ Closeness Centrality of Kliwantoro				COPYRIGHT © ANTARA 2023: 8.2736
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4810b8e105a59be3665c6928871d1225516c2f31926e7f3a2d94ba8d5983bcfc.png" src="_images/4810b8e105a59be3665c6928871d1225516c2f31926e7f3a2d94ba8d5983bcfc.png" />
+<img alt="_images/ab0ac089a66be67877b7dce5673c02a3853c66ad1e82030c2b370a7f720a58b7.png" src="_images/ab0ac089a66be67877b7dce5673c02a3853c66ad1e82030c2b370a7f720a58b7.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closeness Centrality (Dari Tertinggi ke Terendah):
 Node 0: Closeness Centrality 0.9333
 Kalimat: 
@@ -1704,7 +1705,7 @@ Kalimat: Pasal 55 ayat (1) ke-1 KUHP.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/86b4cbc32effaa072566a2056d88abfa9138be03e74ba8e146e56c16dc80c486.png" src="_images/86b4cbc32effaa072566a2056d88abfa9138be03e74ba8e146e56c16dc80c486.png" />
+<img alt="_images/51ae7b85c782ee8ad9eb25453e933b525a89fe9c9c5cdb5fa504ee51297572b9.png" src="_images/51ae7b85c782ee8ad9eb25453e933b525a89fe9c9c5cdb5fa504ee51297572b9.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PageRank Centrality (Dari Tertinggi ke Terendah):
 Node 0: PageRank Centrality 0.1001
 Kalimat: 
@@ -1795,7 +1796,7 @@ Kalimat: Kliwantoro				COPYRIGHT © ANTARA 2023
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Crawling Berita</p>
       </div>
     </a>
 </div>
