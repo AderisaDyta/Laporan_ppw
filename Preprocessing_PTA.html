@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -139,6 +139,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -171,6 +172,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Crawling_PTA.html">Crawling PTA</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Preprocessing_PTA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modelling_LDA.html">Modelling LDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Crawling_Berita.html">Crawling Berita</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20_013_Aderisa_Dyta_Okvianti_Berita.html">Crawling 1 Berita</a></li>
 </ul>
 
     </div>
@@ -324,6 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -334,6 +338,7 @@ document.write(`
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -341,7 +346,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -357,6 +364,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemodelan-lda">Pemodelan LDA</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -390,7 +405,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-abf84db8-18d5-4eff-8dc8-5ad1c09454ad" class="colab-df-container">
+  <div id="df-d9e328b4-bd7b-4e08-8a52-546eae310f14" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -524,7 +539,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-abf84db8-18d5-4eff-8dc8-5ad1c09454ad')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d9e328b4-bd7b-4e08-8a52-546eae310f14')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -576,12 +591,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-abf84db8-18d5-4eff-8dc8-5ad1c09454ad button.colab-df-convert');
+        document.querySelector('#df-d9e328b4-bd7b-4e08-8a52-546eae310f14 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-abf84db8-18d5-4eff-8dc8-5ad1c09454ad');
+        const element = document.querySelector('#df-d9e328b4-bd7b-4e08-8a52-546eae310f14');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -614,7 +629,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-458e6694-73b1-4e7d-894f-8b2b113766c0" class="colab-df-container">
+  <div id="df-d0172261-72d7-4290-91e0-28558faa5cef" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -688,7 +703,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-458e6694-73b1-4e7d-894f-8b2b113766c0')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d0172261-72d7-4290-91e0-28558faa5cef')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -740,12 +755,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-458e6694-73b1-4e7d-894f-8b2b113766c0 button.colab-df-convert');
+        document.querySelector('#df-d0172261-72d7-4290-91e0-28558faa5cef button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-458e6694-73b1-4e7d-894f-8b2b113766c0');
+        const element = document.querySelector('#df-d0172261-72d7-4290-91e0-28558faa5cef');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -816,7 +831,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-4a4b8091-c7a5-445a-b775-dac2115de904" class="colab-df-container">
+  <div id="df-f275c08f-88f8-4d09-93b5-a360ce1ae481" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -865,7 +880,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-4a4b8091-c7a5-445a-b775-dac2115de904')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-f275c08f-88f8-4d09-93b5-a360ce1ae481')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -917,12 +932,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-4a4b8091-c7a5-445a-b775-dac2115de904 button.colab-df-convert');
+        document.querySelector('#df-f275c08f-88f8-4d09-93b5-a360ce1ae481 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-4a4b8091-c7a5-445a-b775-dac2115de904');
+        const element = document.querySelector('#df-f275c08f-88f8-4d09-93b5-a360ce1ae481');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -973,81 +988,58 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading collection &#39;popular&#39;
 [nltk_data]    | 
 [nltk_data]    | Downloading package cmudict to /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/cmudict.zip.
+[nltk_data]    |   Package cmudict is already up-to-date!
 [nltk_data]    | Downloading package gazetteers to /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/gazetteers.zip.
+[nltk_data]    |   Package gazetteers is already up-to-date!
 [nltk_data]    | Downloading package genesis to /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/genesis.zip.
+[nltk_data]    |   Package genesis is already up-to-date!
 [nltk_data]    | Downloading package gutenberg to /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/gutenberg.zip.
+[nltk_data]    |   Package gutenberg is already up-to-date!
 [nltk_data]    | Downloading package inaugural to /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/inaugural.zip.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package movie_reviews to
+[nltk_data]    |   Package inaugural is already up-to-date!
+[nltk_data]    | Downloading package movie_reviews to
 [nltk_data]    |     /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/movie_reviews.zip.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package names to /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/names.zip.
+[nltk_data]    |   Package movie_reviews is already up-to-date!
+[nltk_data]    | Downloading package names to /root/nltk_data...
+[nltk_data]    |   Package names is already up-to-date!
 [nltk_data]    | Downloading package shakespeare to /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/shakespeare.zip.
+[nltk_data]    |   Package shakespeare is already up-to-date!
 [nltk_data]    | Downloading package stopwords to /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/stopwords.zip.
+[nltk_data]    |   Package stopwords is already up-to-date!
 [nltk_data]    | Downloading package treebank to /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/treebank.zip.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package twitter_samples to
+[nltk_data]    |   Package treebank is already up-to-date!
+[nltk_data]    | Downloading package twitter_samples to
 [nltk_data]    |     /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/twitter_samples.zip.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package omw to /root/nltk_data...
+[nltk_data]    |   Package twitter_samples is already up-to-date!
+[nltk_data]    | Downloading package omw to /root/nltk_data...
+[nltk_data]    |   Package omw is already up-to-date!
 [nltk_data]    | Downloading package omw-1.4 to /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package wordnet to /root/nltk_data...
+[nltk_data]    |   Package omw-1.4 is already up-to-date!
+[nltk_data]    | Downloading package wordnet to /root/nltk_data...
+[nltk_data]    |   Package wordnet is already up-to-date!
 [nltk_data]    | Downloading package wordnet2021 to /root/nltk_data...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package wordnet31 to /root/nltk_data...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Package wordnet2021 is already up-to-date!
+[nltk_data]    | Downloading package wordnet31 to /root/nltk_data...
+[nltk_data]    |   Package wordnet31 is already up-to-date!
 [nltk_data]    | Downloading package wordnet_ic to /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/wordnet_ic.zip.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package words to /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/words.zip.
+[nltk_data]    |   Package wordnet_ic is already up-to-date!
+[nltk_data]    | Downloading package words to /root/nltk_data...
+[nltk_data]    |   Package words is already up-to-date!
 [nltk_data]    | Downloading package maxent_ne_chunker to
 [nltk_data]    |     /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping chunkers/maxent_ne_chunker.zip.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package punkt to /root/nltk_data...
+[nltk_data]    |   Package maxent_ne_chunker is already up-to-date!
+[nltk_data]    | Downloading package punkt to /root/nltk_data...
 [nltk_data]    |   Package punkt is already up-to-date!
 [nltk_data]    | Downloading package snowball_data to
 [nltk_data]    |     /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package averaged_perceptron_tagger to
+[nltk_data]    |   Package snowball_data is already up-to-date!
+[nltk_data]    | Downloading package averaged_perceptron_tagger to
 [nltk_data]    |     /root/nltk_data...
-[nltk_data]    |   Unzipping taggers/averaged_perceptron_tagger.zip.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | 
+[nltk_data]    |   Package averaged_perceptron_tagger is already up-
+[nltk_data]    |       to-date!
+[nltk_data]    | 
 [nltk_data]  Done downloading collection popular
 </pre></div>
 </div>
@@ -1066,7 +1058,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-b9f37bd0-e2c7-43b7-8d1f-4107c29e534e" class="colab-df-container">
+  <div id="df-26994742-17f3-4c65-a1d0-a456aedc8e95" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1121,7 +1113,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-b9f37bd0-e2c7-43b7-8d1f-4107c29e534e')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-26994742-17f3-4c65-a1d0-a456aedc8e95')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1173,12 +1165,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-b9f37bd0-e2c7-43b7-8d1f-4107c29e534e button.colab-df-convert');
+        document.querySelector('#df-26994742-17f3-4c65-a1d0-a456aedc8e95 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-b9f37bd0-e2c7-43b7-8d1f-4107c29e534e');
+        const element = document.querySelector('#df-26994742-17f3-4c65-a1d0-a456aedc8e95');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1264,7 +1256,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-e3b55e8b-061a-4c2d-9d8e-2add1377448b" class="colab-df-container">
+  <div id="df-0cef0249-8ee2-464f-b9f8-5efdbd4054a0" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1319,7 +1311,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-e3b55e8b-061a-4c2d-9d8e-2add1377448b')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-0cef0249-8ee2-464f-b9f8-5efdbd4054a0')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1371,12 +1363,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-e3b55e8b-061a-4c2d-9d8e-2add1377448b button.colab-df-convert');
+        document.querySelector('#df-0cef0249-8ee2-464f-b9f8-5efdbd4054a0 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-e3b55e8b-061a-4c2d-9d8e-2add1377448b');
+        const element = document.querySelector('#df-0cef0249-8ee2-464f-b9f8-5efdbd4054a0');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1411,18 +1403,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting Sastrawi
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading Sastrawi-1.0.1-py2.py3-none-any.whl (209 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/209.7 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">41.0/209.7 kB</span> <span class=" -Color -Color-Red">1.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">209.7/209.7 kB</span> <span class=" -Color -Color-Red">3.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: Sastrawi
-Successfully installed Sastrawi-1.0.1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packages (1.0.1)
 </pre></div>
 </div>
 </div>
@@ -1460,7 +1441,7 @@ Successfully installed Sastrawi-1.0.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-057a8390-3593-4c33-b1c6-48fc2b5bf92b" class="colab-df-container">
+  <div id="df-63bd0cc2-5058-4207-8354-cefa2529990d" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1546,7 +1527,7 @@ Successfully installed Sastrawi-1.0.1
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-057a8390-3593-4c33-b1c6-48fc2b5bf92b')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-63bd0cc2-5058-4207-8354-cefa2529990d')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1598,12 +1579,12 @@ Successfully installed Sastrawi-1.0.1
 
     <script>
       const buttonEl =
-        document.querySelector('#df-057a8390-3593-4c33-b1c6-48fc2b5bf92b button.colab-df-convert');
+        document.querySelector('#df-63bd0cc2-5058-4207-8354-cefa2529990d button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-057a8390-3593-4c33-b1c6-48fc2b5bf92b');
+        const element = document.querySelector('#df-63bd0cc2-5058-4207-8354-cefa2529990d');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1956,7 +1937,7 @@ Successfully installed Sastrawi-1.0.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-2853e76c-9480-45ec-bcc7-b66e52704a14" class="colab-df-container">
+  <div id="df-864203ec-87b8-4d08-b2d5-b4c4020a8c13" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2270,7 +2251,7 @@ Successfully installed Sastrawi-1.0.1
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-2853e76c-9480-45ec-bcc7-b66e52704a14')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-864203ec-87b8-4d08-b2d5-b4c4020a8c13')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -2322,12 +2303,12 @@ Successfully installed Sastrawi-1.0.1
 
     <script>
       const buttonEl =
-        document.querySelector('#df-2853e76c-9480-45ec-bcc7-b66e52704a14 button.colab-df-convert');
+        document.querySelector('#df-864203ec-87b8-4d08-b2d5-b4c4020a8c13 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-2853e76c-9480-45ec-bcc7-b66e52704a14');
+        const element = document.querySelector('#df-864203ec-87b8-4d08-b2d5-b4c4020a8c13');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2381,7 +2362,7 @@ Successfully installed Sastrawi-1.0.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-0a4d107e-fafc-4ac6-91bd-737e36e80876" class="colab-df-container">
+  <div id="df-107f1479-bbe7-429a-afdc-450e8d83f502" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2695,7 +2676,7 @@ Successfully installed Sastrawi-1.0.1
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-0a4d107e-fafc-4ac6-91bd-737e36e80876')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-107f1479-bbe7-429a-afdc-450e8d83f502')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -2747,12 +2728,12 @@ Successfully installed Sastrawi-1.0.1
 
     <script>
       const buttonEl =
-        document.querySelector('#df-0a4d107e-fafc-4ac6-91bd-737e36e80876 button.colab-df-convert');
+        document.querySelector('#df-107f1479-bbe7-429a-afdc-450e8d83f502 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-0a4d107e-fafc-4ac6-91bd-737e36e80876');
+        const element = document.querySelector('#df-107f1479-bbe7-429a-afdc-450e8d83f502');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2834,7 +2815,7 @@ Length: 9099, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-fe846bd1-9c90-433b-894a-82694ccb027d" class="colab-df-container">
+  <div id="df-9838ec62-be4b-4a7f-993b-27cf39d78f95" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3148,7 +3129,7 @@ Length: 9099, dtype: int64
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-fe846bd1-9c90-433b-894a-82694ccb027d')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9838ec62-be4b-4a7f-993b-27cf39d78f95')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -3200,12 +3181,12 @@ Length: 9099, dtype: int64
 
     <script>
       const buttonEl =
-        document.querySelector('#df-fe846bd1-9c90-433b-894a-82694ccb027d button.colab-df-convert');
+        document.querySelector('#df-9838ec62-be4b-4a7f-993b-27cf39d78f95 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-fe846bd1-9c90-433b-894a-82694ccb027d');
+        const element = document.querySelector('#df-9838ec62-be4b-4a7f-993b-27cf39d78f95');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3288,7 +3269,7 @@ Length: 9099, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-92307e2b-d2a9-4ac6-898f-48d07e21e771" class="colab-df-container">
+  <div id="df-599acb94-c722-487e-8893-2e46e312234a" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3602,7 +3583,7 @@ Length: 9099, dtype: float64
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-92307e2b-d2a9-4ac6-898f-48d07e21e771')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-599acb94-c722-487e-8893-2e46e312234a')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -3654,12 +3635,12 @@ Length: 9099, dtype: float64
 
     <script>
       const buttonEl =
-        document.querySelector('#df-92307e2b-d2a9-4ac6-898f-48d07e21e771 button.colab-df-convert');
+        document.querySelector('#df-599acb94-c722-487e-8893-2e46e312234a button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-92307e2b-d2a9-4ac6-898f-48d07e21e771');
+        const element = document.querySelector('#df-599acb94-c722-487e-8893-2e46e312234a');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3741,8 +3722,9 @@ Length: 9099, dtype: int64
 </div>
 </div>
 </div>
-<p>##LDA
-Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunakan untuk mengidentifikasi topik-topik utama yang muncul dalam kumpulan dokumen atau teks.</p>
+<section id="pemodelan-lda">
+<h2>Pemodelan LDA<a class="headerlink" href="#pemodelan-lda" title="Permalink to this heading">#</a></h2>
+<p>Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunakan untuk mengidentifikasi topik-topik utama yang muncul dalam kumpulan dokumen atau teks.</p>
 <p>Proses penerapan Latent Dirichlet Allocation (LDA) untuk melakukan analisis topik pada dokumen menggunakan pustaka scikit-learn</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3781,7 +3763,7 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-3620e8e0-8db4-448d-8c61-ca73d0931b34" class="colab-df-container">
+  <div id="df-f8ce3a9a-7896-4e67-a8c2-216eb8358a4b" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3811,35 +3793,35 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
       <th>0</th>
       <td>0.000594</td>
       <td>0.000594</td>
-      <td>0.000594</td>
       <td>0.998218</td>
+      <td>0.000594</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0.000739</td>
-      <td>0.000739</td>
-      <td>0.000739</td>
-      <td>0.997784</td>
+      <td>0.092994</td>
+      <td>0.158818</td>
+      <td>0.747450</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.997964</td>
+      <td>0.257767</td>
       <td>0.000679</td>
-      <td>0.000679</td>
-      <td>0.000679</td>
+      <td>0.407907</td>
+      <td>0.333647</td>
     </tr>
     <tr>
       <th>3</th>
       <td>0.000693</td>
+      <td>0.426249</td>
       <td>0.000693</td>
-      <td>0.000693</td>
-      <td>0.997922</td>
+      <td>0.572366</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.765594</td>
-      <td>0.233494</td>
+      <td>0.355635</td>
       <td>0.000456</td>
+      <td>0.643454</td>
       <td>0.000456</td>
     </tr>
     <tr>
@@ -3851,38 +3833,38 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
     </tr>
     <tr>
       <th>705</th>
-      <td>0.557128</td>
-      <td>0.142365</td>
-      <td>0.299609</td>
+      <td>0.000898</td>
+      <td>0.000898</td>
+      <td>0.997306</td>
       <td>0.000898</td>
     </tr>
     <tr>
       <th>706</th>
-      <td>0.186713</td>
       <td>0.000811</td>
-      <td>0.153405</td>
-      <td>0.659071</td>
+      <td>0.734274</td>
+      <td>0.000811</td>
+      <td>0.264104</td>
     </tr>
     <tr>
       <th>707</th>
       <td>0.000434</td>
       <td>0.000434</td>
-      <td>0.693011</td>
-      <td>0.306121</td>
+      <td>0.998698</td>
+      <td>0.000434</td>
     </tr>
     <tr>
       <th>708</th>
+      <td>0.000448</td>
+      <td>0.000448</td>
       <td>0.998657</td>
-      <td>0.000448</td>
-      <td>0.000448</td>
       <td>0.000448</td>
     </tr>
     <tr>
       <th>709</th>
+      <td>0.000591</td>
       <td>0.000590</td>
-      <td>0.278172</td>
       <td>0.000590</td>
-      <td>0.720647</td>
+      <td>0.998229</td>
     </tr>
   </tbody>
 </table>
@@ -3891,7 +3873,7 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-3620e8e0-8db4-448d-8c61-ca73d0931b34')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-f8ce3a9a-7896-4e67-a8c2-216eb8358a4b')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -3943,12 +3925,12 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 
     <script>
       const buttonEl =
-        document.querySelector('#df-3620e8e0-8db4-448d-8c61-ca73d0931b34 button.colab-df-convert');
+        document.querySelector('#df-f8ce3a9a-7896-4e67-a8c2-216eb8358a4b button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-3620e8e0-8db4-448d-8c61-ca73d0931b34');
+        const element = document.querySelector('#df-f8ce3a9a-7896-4e67-a8c2-216eb8358a4b');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3991,7 +3973,7 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-68fcaa09-e0b5-4c66-a58b-6a8455d48ac3" class="colab-df-container">
+  <div id="df-9ecbb555-c2f4-4422-b631-9f76d0e7d778" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -4037,98 +4019,98 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
     <tr>
       <th>0</th>
       <td>0.2</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>4.492987</td>
-      <td>0.2</td>
+      <td>6.603740</td>
       <td>1.2</td>
       <td>0.200000</td>
+      <td>4.710368</td>
       <td>0.2</td>
+      <td>0.2</td>
+      <td>2.196929</td>
       <td>0.200000</td>
+      <td>0.2</td>
       <td>...</td>
-      <td>0.2</td>
-      <td>1.276428</td>
-      <td>0.205617</td>
+      <td>2.2</td>
+      <td>0.201899</td>
+      <td>9.484884</td>
       <td>0.200000</td>
+      <td>0.200524</td>
       <td>0.200000</td>
-      <td>0.210663</td>
-      <td>0.20301</td>
-      <td>0.201975</td>
+      <td>0.200145</td>
+      <td>3.197287</td>
       <td>0.2</td>
       <td>0.2</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0.2</td>
-      <td>0.201896</td>
-      <td>0.220411</td>
       <td>0.200000</td>
-      <td>2.007441</td>
-      <td>0.2</td>
-      <td>0.2</td>
-      <td>0.200498</td>
       <td>0.2</td>
       <td>0.200000</td>
+      <td>10.153760</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>0.2</td>
       <td>...</td>
-      <td>2.2</td>
-      <td>0.200000</td>
-      <td>3.683019</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.203704</td>
-      <td>0.20000</td>
-      <td>0.201066</td>
       <td>0.2</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>1.194954</td>
+      <td>0.200000</td>
+      <td>2.200001</td>
+      <td>0.200000</td>
+      <td>0.202713</td>
+      <td>1.2</td>
       <td>0.2</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1.2</td>
-      <td>7.198104</td>
-      <td>0.200000</td>
-      <td>0.202355</td>
-      <td>4.361982</td>
+      <td>0.200447</td>
       <td>0.2</td>
+      <td>0.200855</td>
+      <td>2.793103</td>
+      <td>1.2</td>
       <td>0.2</td>
-      <td>2.199502</td>
-      <td>0.2</td>
-      <td>2.197336</td>
+      <td>0.203071</td>
+      <td>4.189089</td>
+      <td>2.2</td>
       <td>...</td>
       <td>0.2</td>
-      <td>1.072186</td>
-      <td>12.342481</td>
-      <td>0.207124</td>
-      <td>2.200001</td>
-      <td>1.185631</td>
-      <td>1.19699</td>
+      <td>3.198101</td>
+      <td>7.915033</td>
+      <td>0.205046</td>
+      <td>3.199476</td>
+      <td>1.199999</td>
+      <td>1.199855</td>
       <td>0.200000</td>
       <td>0.2</td>
-      <td>1.2</td>
+      <td>0.2</td>
     </tr>
     <tr>
       <th>3</th>
       <td>0.2</td>
-      <td>0.200000</td>
-      <td>1.179589</td>
-      <td>2.197645</td>
-      <td>18.937590</td>
-      <td>1.2</td>
+      <td>0.795813</td>
       <td>0.2</td>
+      <td>2.199145</td>
+      <td>12.142769</td>
+      <td>0.2</td>
+      <td>1.2</td>
       <td>0.200000</td>
-      <td>4.2</td>
-      <td>0.202664</td>
+      <td>0.210911</td>
+      <td>0.2</td>
       <td>...</td>
       <td>0.2</td>
-      <td>1.251386</td>
-      <td>1.568884</td>
-      <td>1.192876</td>
-      <td>1.199999</td>
-      <td>2.200001</td>
-      <td>0.20000</td>
-      <td>3.196958</td>
-      <td>1.2</td>
+      <td>0.200000</td>
+      <td>0.200082</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
       <td>0.2</td>
+      <td>1.2</td>
     </tr>
   </tbody>
 </table>
@@ -4137,7 +4119,7 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-68fcaa09-e0b5-4c66-a58b-6a8455d48ac3')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9ecbb555-c2f4-4422-b631-9f76d0e7d778')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -4189,12 +4171,12 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 
     <script>
       const buttonEl =
-        document.querySelector('#df-68fcaa09-e0b5-4c66-a58b-6a8455d48ac3 button.colab-df-convert');
+        document.querySelector('#df-9ecbb555-c2f4-4422-b631-9f76d0e7d778 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-68fcaa09-e0b5-4c66-a58b-6a8455d48ac3');
+        const element = document.querySelector('#df-9ecbb555-c2f4-4422-b631-9f76d0e7d778');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -4226,6 +4208,7 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 </div>
 </div>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -4255,7 +4238,7 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="Crawling_PTA.html"
@@ -4282,6 +4265,20 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemodelan-lda">Pemodelan LDA</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -4298,6 +4295,7 @@ By Aderisa Dyta Okvianti
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -4324,8 +4322,8 @@ By Aderisa Dyta Okvianti
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
