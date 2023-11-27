@@ -172,8 +172,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Crawling_PTA.html">Crawling PTA</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Preprocessing_PTA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modelling_LDA.html">Modelling LDA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Crawling_Berita.html">Crawling Berita</a></li>
-<li class="toctree-l1"><a class="reference internal" href="20_013_Aderisa_Dyta_Okvianti_Berita.html">Crawling 1 Berita</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DataCrawling_Berita.html">Crawling Berita</a></li>
+
+
+
+
+
+
 </ul>
 
     </div>
@@ -369,7 +374,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemodelan-lda">Pemodelan LDA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library"><strong>Import Library</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-data"><strong>Cleaning Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenisasi"><strong>Tokenisasi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword"><strong>Stopword</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming"><strong>Stemming</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-extraction"><strong>Feature Extraction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoder"><strong>One Hot Encoder</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf"><strong>TF-IDF</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-frequensi"><strong>Term Frequensi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-frekuensi"><strong>Log Frekuensi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-frekuensi"><strong>Binary Frekuensi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemodelan-lda"><strong>Pemodelan LDA</strong></a></li>
 </ul>
             </nav>
         </div>
@@ -390,7 +406,8 @@ document.write(`
 <li><p>Stopword : Menghilangkan kata-kata umum yang sering muncul namun tidak membawa banyak informasi, seperti “dan,” “atau,” dan “yang.”</p></li>
 <li><p>Stemming : Mereduksi kata-kata ke bentuk dasar mereka. Stemming menghapus akhiran kata secara kasar.</p></li>
 </ol>
-<p><strong>Import Library</strong></p>
+<section id="import-library">
+<h2><strong>Import Library</strong><a class="headerlink" href="#import-library" title="Permalink to this heading">#</a></h2>
 <p>import pandas merupakan library python yang sering digunakan untuk manipulasi dan analisis data.
 NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk manipulasi data numerik.</p>
 <div class="cell docutils container">
@@ -405,7 +422,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-d9e328b4-bd7b-4e08-8a52-546eae310f14" class="colab-df-container">
+  <div id="df-9ff21e2e-28d0-45b5-95d5-f10b02d37faf" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -539,7 +556,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-d9e328b4-bd7b-4e08-8a52-546eae310f14')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9ff21e2e-28d0-45b5-95d5-f10b02d37faf')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -591,12 +608,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-d9e328b4-bd7b-4e08-8a52-546eae310f14 button.colab-df-convert');
+        document.querySelector('#df-9ff21e2e-28d0-45b5-95d5-f10b02d37faf button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-d9e328b4-bd7b-4e08-8a52-546eae310f14');
+        const element = document.querySelector('#df-9ff21e2e-28d0-45b5-95d5-f10b02d37faf');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -629,7 +646,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-d0172261-72d7-4290-91e0-28558faa5cef" class="colab-df-container">
+  <div id="df-a4fe6ca5-fdd2-4b0e-9782-0e306db685d8" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -703,7 +720,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-d0172261-72d7-4290-91e0-28558faa5cef')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-a4fe6ca5-fdd2-4b0e-9782-0e306db685d8')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -755,12 +772,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-d0172261-72d7-4290-91e0-28558faa5cef button.colab-df-convert');
+        document.querySelector('#df-a4fe6ca5-fdd2-4b0e-9782-0e306db685d8 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-d0172261-72d7-4290-91e0-28558faa5cef');
+        const element = document.querySelector('#df-a4fe6ca5-fdd2-4b0e-9782-0e306db685d8');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -783,7 +800,9 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
   </div>
   </div></div>
 </div>
-<p><strong>Cleaning Data</strong></p>
+</section>
+<section id="cleaning-data">
+<h2><strong>Cleaning Data</strong><a class="headerlink" href="#cleaning-data" title="Permalink to this heading">#</a></h2>
 <p>Import Library</p>
 <p>re: Library untuk operasi regular expression (regex), digunakan untuk mencari dan mengganti pola dalam teks.</p>
 <p>string: Library yang menyediakan string of characters umum, seperti string.punctuation yang berisi karakter tanda baca.</p>
@@ -831,7 +850,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-f275c08f-88f8-4d09-93b5-a360ce1ae481" class="colab-df-container">
+  <div id="df-7b9bcb72-b70c-48d4-a1ff-835f483dea12" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -880,7 +899,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-f275c08f-88f8-4d09-93b5-a360ce1ae481')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-7b9bcb72-b70c-48d4-a1ff-835f483dea12')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -932,12 +951,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-f275c08f-88f8-4d09-93b5-a360ce1ae481 button.colab-df-convert');
+        document.querySelector('#df-7b9bcb72-b70c-48d4-a1ff-835f483dea12 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-f275c08f-88f8-4d09-93b5-a360ce1ae481');
+        const element = document.querySelector('#df-7b9bcb72-b70c-48d4-a1ff-835f483dea12');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -969,7 +988,9 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 </div>
 </div>
-<p><strong>Tokenisasi</strong></p>
+</section>
+<section id="tokenisasi">
+<h2><strong>Tokenisasi</strong><a class="headerlink" href="#tokenisasi" title="Permalink to this heading">#</a></h2>
 <p>Import Library</p>
 <ul class="simple">
 <li><p>NLTK adalah library yang umumnya digunakan untuk pemrosesan bahasa alami (NLP) dalam lingkungan Python.</p></li>
@@ -1018,13 +1039,13 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 [nltk_data]    | Downloading package wordnet to /root/nltk_data...
 [nltk_data]    |   Package wordnet is already up-to-date!
 [nltk_data]    | Downloading package wordnet2021 to /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Package wordnet2021 is already up-to-date!
+[nltk_data]    |   Package wordnet2021 is already up-to-date!
 [nltk_data]    | Downloading package wordnet31 to /root/nltk_data...
 [nltk_data]    |   Package wordnet31 is already up-to-date!
 [nltk_data]    | Downloading package wordnet_ic to /root/nltk_data...
-[nltk_data]    |   Package wordnet_ic is already up-to-date!
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Package wordnet_ic is already up-to-date!
 [nltk_data]    | Downloading package words to /root/nltk_data...
 [nltk_data]    |   Package words is already up-to-date!
 [nltk_data]    | Downloading package maxent_ne_chunker to
@@ -1058,7 +1079,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-26994742-17f3-4c65-a1d0-a456aedc8e95" class="colab-df-container">
+  <div id="df-87c748fe-f801-483d-865a-edddb9881aaf" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1113,7 +1134,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-26994742-17f3-4c65-a1d0-a456aedc8e95')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-87c748fe-f801-483d-865a-edddb9881aaf')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1165,12 +1186,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-26994742-17f3-4c65-a1d0-a456aedc8e95 button.colab-df-convert');
+        document.querySelector('#df-87c748fe-f801-483d-865a-edddb9881aaf button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-26994742-17f3-4c65-a1d0-a456aedc8e95');
+        const element = document.querySelector('#df-87c748fe-f801-483d-865a-edddb9881aaf');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1193,7 +1214,9 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
   </div>
   </div></div>
 </div>
-<p><strong>Stopword</strong></p>
+</section>
+<section id="stopword">
+<h2><strong>Stopword</strong><a class="headerlink" href="#stopword" title="Permalink to this heading">#</a></h2>
 <p>Import Library</p>
 <p>menggunakan library NLTK untuk mengimpor daftar kata-kata tidak penting (stopwords) untuk bahasa Indonesia.</p>
 <ul class="simple">
@@ -1256,7 +1279,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-0cef0249-8ee2-464f-b9f8-5efdbd4054a0" class="colab-df-container">
+  <div id="df-d3664933-94c3-455e-9317-75786cd1963f" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1311,7 +1334,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-0cef0249-8ee2-464f-b9f8-5efdbd4054a0')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d3664933-94c3-455e-9317-75786cd1963f')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1363,12 +1386,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-0cef0249-8ee2-464f-b9f8-5efdbd4054a0 button.colab-df-convert');
+        document.querySelector('#df-d3664933-94c3-455e-9317-75786cd1963f button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-0cef0249-8ee2-464f-b9f8-5efdbd4054a0');
+        const element = document.querySelector('#df-d3664933-94c3-455e-9317-75786cd1963f');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1391,7 +1414,9 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
   </div>
   </div></div>
 </div>
-<p>Stemming</p>
+</section>
+<section id="stemming">
+<h2><strong>Stemming</strong><a class="headerlink" href="#stemming" title="Permalink to this heading">#</a></h2>
 <p>Proses merubah kata berimbuhan menjadi kata dasar
 (Mengubah hasil dari stopword menjadi kata dasar)</p>
 <p>Instal sastrawi</p>
@@ -1441,7 +1466,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-63bd0cc2-5058-4207-8354-cefa2529990d" class="colab-df-container">
+  <div id="df-9c0dabfa-2cc0-4db6-b22c-754e37d43f68" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1527,7 +1552,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-63bd0cc2-5058-4207-8354-cefa2529990d')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9c0dabfa-2cc0-4db6-b22c-754e37d43f68')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1579,12 +1604,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-63bd0cc2-5058-4207-8354-cefa2529990d button.colab-df-convert');
+        document.querySelector('#df-9c0dabfa-2cc0-4db6-b22c-754e37d43f68 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-63bd0cc2-5058-4207-8354-cefa2529990d');
+        const element = document.querySelector('#df-9c0dabfa-2cc0-4db6-b22c-754e37d43f68');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1607,9 +1632,13 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
   </div>
   </div></div>
 </div>
-<p><strong>Feature Extraction</strong></p>
+</section>
+<section id="feature-extraction">
+<h2><strong>Feature Extraction</strong><a class="headerlink" href="#feature-extraction" title="Permalink to this heading">#</a></h2>
 <p>Feature extraction adalah proses mengonversi data mentah menjadi representasi fitur yang dapat digunakan untuk analisis atau pemodelan. Ini adalah langkah kritis dalam pemrosesan data sebelum diterapkan pada model machine learning atau analisis data.</p>
-<p><strong>One Hot Encoder</strong></p>
+</section>
+<section id="one-hot-encoder">
+<h2><strong>One Hot Encoder</strong><a class="headerlink" href="#one-hot-encoder" title="Permalink to this heading">#</a></h2>
 <p>menggunakan OneHotEncoder dari scikit-learn untuk mengubah variabel kategorikal (dalam hal ini, kolom ‘Abstrak’) menjadi representasi numerik biner atau one-hot encoding.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1916,7 +1945,9 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 </div>
 </div>
-<p><strong>TF-IDF</strong></p>
+</section>
+<section id="tf-idf">
+<h2><strong>TF-IDF</strong><a class="headerlink" href="#tf-idf" title="Permalink to this heading">#</a></h2>
 <p>menghitung kemunculan term(kata) dari dokumen teks menggunakan library scikit-learn.</p>
 <p>menggunakan modul TfidfVectorizer dari scikit-learn (sklearn) untuk mengonversi teks dalam kolom ‘Abstrak’ suatu DataFrame menjadi representasi numerik dengan skema TF-IDF (Term Frequency-Inverse Document Frequency)</p>
 <div class="cell docutils container">
@@ -1937,7 +1968,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-864203ec-87b8-4d08-b2d5-b4c4020a8c13" class="colab-df-container">
+  <div id="df-63837293-d918-44e1-98ce-1e19e3b852f1" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2251,7 +2282,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-864203ec-87b8-4d08-b2d5-b4c4020a8c13')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-63837293-d918-44e1-98ce-1e19e3b852f1')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -2303,12 +2334,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-864203ec-87b8-4d08-b2d5-b4c4020a8c13 button.colab-df-convert');
+        document.querySelector('#df-63837293-d918-44e1-98ce-1e19e3b852f1 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-864203ec-87b8-4d08-b2d5-b4c4020a8c13');
+        const element = document.querySelector('#df-63837293-d918-44e1-98ce-1e19e3b852f1');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2339,7 +2370,9 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 </div>
 </div>
-<p><strong>Term Frequensi</strong></p>
+</section>
+<section id="term-frequensi">
+<h2><strong>Term Frequensi</strong><a class="headerlink" href="#term-frequensi" title="Permalink to this heading">#</a></h2>
 <p>Term frequency (TF) adalah metrik yang digunakan dalam pemrosesan bahasa alami dan pengelolaan informasi untuk mengukur seberapa sering sebuah kata muncul dalam suatu dokumen atau kumpulan dokumen. Tujuan dari TF adalah untuk memberikan bobot pada kata-kata berdasarkan frekuensi kemunculan mereka dalam suatu konteks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2362,7 +2395,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-107f1479-bbe7-429a-afdc-450e8d83f502" class="colab-df-container">
+  <div id="df-539e929a-b61a-403b-9230-8c27cd9b4968" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2676,7 +2709,7 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-107f1479-bbe7-429a-afdc-450e8d83f502')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-539e929a-b61a-403b-9230-8c27cd9b4968')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -2728,12 +2761,12 @@ NumPy menyediakan struktur data array dan operasi matematika yang efisien untuk 
 
     <script>
       const buttonEl =
-        document.querySelector('#df-107f1479-bbe7-429a-afdc-450e8d83f502 button.colab-df-convert');
+        document.querySelector('#df-539e929a-b61a-403b-9230-8c27cd9b4968 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-107f1479-bbe7-429a-afdc-450e8d83f502');
+        const element = document.querySelector('#df-539e929a-b61a-403b-9230-8c27cd9b4968');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2795,7 +2828,9 @@ Length: 9099, dtype: int64
 </div>
 </div>
 </div>
-<p><strong>Log Frekuensi</strong></p>
+</section>
+<section id="log-frekuensi">
+<h2><strong>Log Frekuensi</strong><a class="headerlink" href="#log-frekuensi" title="Permalink to this heading">#</a></h2>
 <p>metode yang melibatkan penggunaan logaritma untuk mengubah skala frekuensi kata-kata dalam suatu dokumen. Tujuannya adalah untuk mengurangi dampak perbedaan besar dalam frekuensi dan memberikan representasi yang lebih seimbang.</p>
 <p>menggunakan TfidfVectorizer dari scikit-learn untuk menghitung Term Frequency (TF) tanpa menggunakan Inverse Document Frequency (IDF).</p>
 <div class="cell docutils container">
@@ -2815,7 +2850,7 @@ Length: 9099, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-9838ec62-be4b-4a7f-993b-27cf39d78f95" class="colab-df-container">
+  <div id="df-762569fb-990b-466a-a185-c262aebb477b" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3129,7 +3164,7 @@ Length: 9099, dtype: int64
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-9838ec62-be4b-4a7f-993b-27cf39d78f95')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-762569fb-990b-466a-a185-c262aebb477b')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -3181,12 +3216,12 @@ Length: 9099, dtype: int64
 
     <script>
       const buttonEl =
-        document.querySelector('#df-9838ec62-be4b-4a7f-993b-27cf39d78f95 button.colab-df-convert');
+        document.querySelector('#df-762569fb-990b-466a-a185-c262aebb477b button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-9838ec62-be4b-4a7f-993b-27cf39d78f95');
+        const element = document.querySelector('#df-762569fb-990b-466a-a185-c262aebb477b');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3248,7 +3283,9 @@ Length: 9099, dtype: float64
 </div>
 </div>
 </div>
-<p><strong>Binary Frekuensi</strong></p>
+</section>
+<section id="binary-frekuensi">
+<h2><strong>Binary Frekuensi</strong><a class="headerlink" href="#binary-frekuensi" title="Permalink to this heading">#</a></h2>
 <p>metode representasi di mana kita hanya memperhatikan keberadaan atau ketiadaan suatu kata dalam suatu dokumen, tanpa memperhitungkan berapa kali kata tersebut muncul. Representasi ini menghasilkan matriks biner di mana nilai setiap elemen dapat menjadi 0 (tidak ada) atau 1 (ada).</p>
 <p>menggunakan CountVectorizer dari scikit-learn dengan parameter binary=True untuk membuat representasi binary frequency atau binary term presence dari dokumen-dokumen dalam kolom ‘Abstrak’.</p>
 <div class="cell docutils container">
@@ -3269,7 +3306,7 @@ Length: 9099, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-599acb94-c722-487e-8893-2e46e312234a" class="colab-df-container">
+  <div id="df-1e2d74f2-8fd7-47c3-9a0e-1f19424f1a47" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3583,7 +3620,7 @@ Length: 9099, dtype: float64
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-599acb94-c722-487e-8893-2e46e312234a')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-1e2d74f2-8fd7-47c3-9a0e-1f19424f1a47')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -3635,12 +3672,12 @@ Length: 9099, dtype: float64
 
     <script>
       const buttonEl =
-        document.querySelector('#df-599acb94-c722-487e-8893-2e46e312234a button.colab-df-convert');
+        document.querySelector('#df-1e2d74f2-8fd7-47c3-9a0e-1f19424f1a47 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-599acb94-c722-487e-8893-2e46e312234a');
+        const element = document.querySelector('#df-1e2d74f2-8fd7-47c3-9a0e-1f19424f1a47');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3722,8 +3759,9 @@ Length: 9099, dtype: int64
 </div>
 </div>
 </div>
+</section>
 <section id="pemodelan-lda">
-<h2>Pemodelan LDA<a class="headerlink" href="#pemodelan-lda" title="Permalink to this heading">#</a></h2>
+<h2><strong>Pemodelan LDA</strong><a class="headerlink" href="#pemodelan-lda" title="Permalink to this heading">#</a></h2>
 <p>Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunakan untuk mengidentifikasi topik-topik utama yang muncul dalam kumpulan dokumen atau teks.</p>
 <p>Proses penerapan Latent Dirichlet Allocation (LDA) untuk melakukan analisis topik pada dokumen menggunakan pustaka scikit-learn</p>
 <div class="cell docutils container">
@@ -3763,7 +3801,7 @@ Length: 9099, dtype: int64
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-f8ce3a9a-7896-4e67-a8c2-216eb8358a4b" class="colab-df-container">
+  <div id="df-64385be4-a6db-43f4-af1f-7db58b7ac90f" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3791,38 +3829,38 @@ Length: 9099, dtype: int64
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.000594</td>
-      <td>0.000594</td>
       <td>0.998218</td>
+      <td>0.000594</td>
+      <td>0.000594</td>
       <td>0.000594</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>0.103471</td>
+      <td>0.362826</td>
       <td>0.000739</td>
-      <td>0.092994</td>
-      <td>0.158818</td>
-      <td>0.747450</td>
+      <td>0.532964</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.257767</td>
+      <td>0.724906</td>
+      <td>0.175641</td>
+      <td>0.098774</td>
       <td>0.000679</td>
-      <td>0.407907</td>
-      <td>0.333647</td>
     </tr>
     <tr>
       <th>3</th>
       <td>0.000693</td>
-      <td>0.426249</td>
+      <td>0.601827</td>
       <td>0.000693</td>
-      <td>0.572366</td>
+      <td>0.396788</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.355635</td>
       <td>0.000456</td>
-      <td>0.643454</td>
       <td>0.000456</td>
+      <td>0.550466</td>
+      <td>0.448622</td>
     </tr>
     <tr>
       <th>...</th>
@@ -3834,36 +3872,36 @@ Length: 9099, dtype: int64
     <tr>
       <th>705</th>
       <td>0.000898</td>
+      <td>0.450521</td>
       <td>0.000898</td>
-      <td>0.997306</td>
-      <td>0.000898</td>
+      <td>0.547683</td>
     </tr>
     <tr>
       <th>706</th>
       <td>0.000811</td>
-      <td>0.734274</td>
       <td>0.000811</td>
-      <td>0.264104</td>
+      <td>0.000811</td>
+      <td>0.997568</td>
     </tr>
     <tr>
       <th>707</th>
+      <td>0.539894</td>
+      <td>0.459238</td>
       <td>0.000434</td>
-      <td>0.000434</td>
-      <td>0.998698</td>
       <td>0.000434</td>
     </tr>
     <tr>
       <th>708</th>
       <td>0.000448</td>
       <td>0.000448</td>
-      <td>0.998657</td>
-      <td>0.000448</td>
+      <td>0.697618</td>
+      <td>0.301487</td>
     </tr>
     <tr>
       <th>709</th>
+      <td>0.000590</td>
+      <td>0.000590</td>
       <td>0.000591</td>
-      <td>0.000590</td>
-      <td>0.000590</td>
       <td>0.998229</td>
     </tr>
   </tbody>
@@ -3873,7 +3911,7 @@ Length: 9099, dtype: int64
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-f8ce3a9a-7896-4e67-a8c2-216eb8358a4b')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-64385be4-a6db-43f4-af1f-7db58b7ac90f')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -3925,12 +3963,12 @@ Length: 9099, dtype: int64
 
     <script>
       const buttonEl =
-        document.querySelector('#df-f8ce3a9a-7896-4e67-a8c2-216eb8358a4b button.colab-df-convert');
+        document.querySelector('#df-64385be4-a6db-43f4-af1f-7db58b7ac90f button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-f8ce3a9a-7896-4e67-a8c2-216eb8358a4b');
+        const element = document.querySelector('#df-64385be4-a6db-43f4-af1f-7db58b7ac90f');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3973,7 +4011,7 @@ Length: 9099, dtype: int64
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-9ecbb555-c2f4-4422-b631-9f76d0e7d778" class="colab-df-container">
+  <div id="df-f4d8759b-8784-4bb7-8ec0-b736d2a94aea" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -4018,99 +4056,99 @@ Length: 9099, dtype: int64
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.2</td>
-      <td>6.603740</td>
       <td>1.2</td>
+      <td>7.199661</td>
       <td>0.200000</td>
-      <td>4.710368</td>
+      <td>2.163426</td>
+      <td>10.049932</td>
+      <td>1.19661</td>
       <td>0.2</td>
-      <td>0.2</td>
-      <td>2.196929</td>
-      <td>0.200000</td>
-      <td>0.2</td>
+      <td>2.199412</td>
+      <td>4.197467</td>
+      <td>2.19694</td>
       <td>...</td>
-      <td>2.2</td>
-      <td>0.201899</td>
-      <td>9.484884</td>
+      <td>0.20000</td>
+      <td>3.198655</td>
+      <td>7.382846</td>
+      <td>1.2</td>
+      <td>0.207047</td>
       <td>0.200000</td>
-      <td>0.200524</td>
+      <td>0.2</td>
+      <td>0.210008</td>
       <td>0.200000</td>
-      <td>0.200145</td>
-      <td>3.197287</td>
-      <td>0.2</td>
-      <td>0.2</td>
+      <td>0.200000</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0.2</td>
+      <td>0.200179</td>
       <td>0.200000</td>
-      <td>0.2</td>
-      <td>0.200000</td>
-      <td>10.153760</td>
-      <td>0.2</td>
-      <td>0.2</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.2</td>
-      <td>...</td>
-      <td>0.2</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>1.194954</td>
-      <td>0.200000</td>
-      <td>2.200001</td>
-      <td>0.200000</td>
-      <td>0.202713</td>
+      <td>0.218220</td>
+      <td>16.035848</td>
+      <td>0.20339</td>
       <td>1.2</td>
+      <td>0.200588</td>
+      <td>0.200000</td>
+      <td>0.20306</td>
+      <td>...</td>
+      <td>0.75816</td>
+      <td>0.200000</td>
+      <td>0.201275</td>
       <td>0.2</td>
+      <td>1.200000</td>
+      <td>3.198195</td>
+      <td>0.2</td>
+      <td>0.202306</td>
+      <td>0.446573</td>
+      <td>0.203066</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.2</td>
-      <td>0.200447</td>
       <td>0.2</td>
-      <td>0.200855</td>
-      <td>2.793103</td>
-      <td>1.2</td>
+      <td>0.200160</td>
+      <td>0.216532</td>
+      <td>0.200000</td>
+      <td>0.200081</td>
+      <td>0.20000</td>
       <td>0.2</td>
-      <td>0.203071</td>
-      <td>4.189089</td>
-      <td>2.2</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>0.20000</td>
       <td>...</td>
+      <td>1.64184</td>
+      <td>0.201345</td>
+      <td>2.365275</td>
       <td>0.2</td>
-      <td>3.198101</td>
-      <td>7.915033</td>
-      <td>0.205046</td>
-      <td>3.199476</td>
-      <td>1.199999</td>
-      <td>1.199855</td>
+      <td>0.200000</td>
       <td>0.200000</td>
       <td>0.2</td>
-      <td>0.2</td>
+      <td>0.208563</td>
+      <td>0.200000</td>
+      <td>1.112796</td>
     </tr>
     <tr>
       <th>3</th>
       <td>0.2</td>
-      <td>0.795813</td>
-      <td>0.2</td>
-      <td>2.199145</td>
-      <td>12.142769</td>
-      <td>0.2</td>
-      <td>1.2</td>
       <td>0.200000</td>
-      <td>0.210911</td>
+      <td>1.183468</td>
+      <td>0.218354</td>
+      <td>3.514139</td>
+      <td>0.20000</td>
       <td>0.2</td>
+      <td>0.200000</td>
+      <td>0.202533</td>
+      <td>0.20000</td>
       <td>...</td>
+      <td>0.20000</td>
+      <td>0.200000</td>
+      <td>7.850604</td>
       <td>0.2</td>
-      <td>0.200000</td>
-      <td>0.200082</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.2</td>
+      <td>2.192953</td>
+      <td>0.201805</td>
       <td>1.2</td>
+      <td>3.179123</td>
+      <td>0.953427</td>
+      <td>0.284138</td>
     </tr>
   </tbody>
 </table>
@@ -4119,7 +4157,7 @@ Length: 9099, dtype: int64
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-9ecbb555-c2f4-4422-b631-9f76d0e7d778')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-f4d8759b-8784-4bb7-8ec0-b736d2a94aea')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -4171,12 +4209,12 @@ Length: 9099, dtype: int64
 
     <script>
       const buttonEl =
-        document.querySelector('#df-9ecbb555-c2f4-4422-b631-9f76d0e7d778 button.colab-df-convert');
+        document.querySelector('#df-f4d8759b-8784-4bb7-8ec0-b736d2a94aea button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-9ecbb555-c2f4-4422-b631-9f76d0e7d778');
+        const element = document.querySelector('#df-f4d8759b-8784-4bb7-8ec0-b736d2a94aea');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -4273,7 +4311,18 @@ Length: 9099, dtype: int64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemodelan-lda">Pemodelan LDA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library"><strong>Import Library</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-data"><strong>Cleaning Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenisasi"><strong>Tokenisasi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword"><strong>Stopword</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming"><strong>Stemming</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-extraction"><strong>Feature Extraction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoder"><strong>One Hot Encoder</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf"><strong>TF-IDF</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-frequensi"><strong>Term Frequensi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-frekuensi"><strong>Log Frekuensi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-frekuensi"><strong>Binary Frekuensi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemodelan-lda"><strong>Pemodelan LDA</strong></a></li>
 </ul>
   </nav></div>
 

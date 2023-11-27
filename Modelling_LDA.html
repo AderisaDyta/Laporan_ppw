@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Modelling_LDA';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Crawling Berita" href="Crawling_Berita.html" />
+    <link rel="next" title="Crawling Berita" href="DataCrawling_Berita.html" />
     <link rel="prev" title="Preprocessing_PTA" href="Preprocessing_PTA.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -172,8 +172,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Crawling_PTA.html">Crawling PTA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Preprocessing_PTA.html">Preprocessing_PTA</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Modelling LDA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Crawling_Berita.html">Crawling Berita</a></li>
-<li class="toctree-l1"><a class="reference internal" href="20_013_Aderisa_Dyta_Okvianti_Berita.html">Crawling 1 Berita</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DataCrawling_Berita.html">Crawling Berita</a></li>
+
+
+
+
+
+
 </ul>
 
     </div>
@@ -346,7 +351,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -362,6 +369,25 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data"><strong>Preprocessing Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-data"><strong>Cleaning Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize"><strong>Tokenize</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword"><strong>Stopword</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming"><strong>Stemming</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-extraction"><strong>Feature Extraction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoder"><strong>One Hot Encoder</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-frequensi"><strong>Term Frequensi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-frekuensi"><strong>Log Frekuensi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-frekuensi"><strong>Binary Frekuensi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf"><strong>TF-IDF</strong></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -374,7 +400,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="modelling-lda">
 <h1>Modelling LDA<a class="headerlink" href="#modelling-lda" title="Permalink to this heading">#</a></h1>
 <p>Modeling LDA (Latent Dirichlet Allocation) adalah suatu pendekatan dalam pemodelan tema atau topik dalam koleksi dokumen. LDA adalah salah satu model generatif yang memungkinkan pemahaman terhadap topik yang muncul dalam korpus teks.</p>
-<p>Import Data</p>
+<section id="import-data">
+<h2>Import Data<a class="headerlink" href="#import-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -387,7 +414,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-3522260f-2145-4483-9060-13e40107c14e" class="colab-df-container">
+  <div id="df-b95208da-fa98-4f27-85d6-ec0a5c3c1af9" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -521,7 +548,7 @@ document.write(`
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-3522260f-2145-4483-9060-13e40107c14e')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-b95208da-fa98-4f27-85d6-ec0a5c3c1af9')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -573,12 +600,12 @@ document.write(`
 
     <script>
       const buttonEl =
-        document.querySelector('#df-3522260f-2145-4483-9060-13e40107c14e button.colab-df-convert');
+        document.querySelector('#df-b95208da-fa98-4f27-85d6-ec0a5c3c1af9 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-3522260f-2145-4483-9060-13e40107c14e');
+        const element = document.querySelector('#df-b95208da-fa98-4f27-85d6-ec0a5c3c1af9');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -611,7 +638,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-baf702c6-da62-44dc-9ea4-8640228dd55c" class="colab-df-container">
+  <div id="df-d7eaa99b-3a01-4ccc-b7d6-0c83db485e93" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -697,7 +724,7 @@ document.write(`
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-baf702c6-da62-44dc-9ea4-8640228dd55c')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d7eaa99b-3a01-4ccc-b7d6-0c83db485e93')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -749,12 +776,12 @@ document.write(`
 
     <script>
       const buttonEl =
-        document.querySelector('#df-baf702c6-da62-44dc-9ea4-8640228dd55c button.colab-df-convert');
+        document.querySelector('#df-d7eaa99b-3a01-4ccc-b7d6-0c83db485e93 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-baf702c6-da62-44dc-9ea4-8640228dd55c');
+        const element = document.querySelector('#df-d7eaa99b-3a01-4ccc-b7d6-0c83db485e93');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -777,9 +804,18 @@ document.write(`
   </div>
   </div></div>
 </div>
-<p>Preprocessing Data</p>
-<p>####Punctuation Proses
-Cleaning Data</p>
+</section>
+<section id="preprocessing-data">
+<h2><strong>Preprocessing Data</strong><a class="headerlink" href="#preprocessing-data" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Cleaning Data : Menghapus karakter atau elemen teks yang tidak relevan atau tidak diinginkan, seperti tanda baca, angka, atau karakter khusus.</p></li>
+<li><p>Tokenizing : Memisahkan teks menjadi unit-unit yang lebih kecil, yang disebut token. Token bisa berupa kata, frasa, atau bahkan karakter, tergantung pada tingkat granularitas yang diinginkan</p></li>
+<li><p>Stopword : Menghilangkan kata-kata umum yang sering muncul namun tidak membawa banyak informasi, seperti “dan,” “atau,” dan “yang.”</p></li>
+<li><p>Stemming : Mereduksi kata-kata ke bentuk dasar mereka. Stemming menghapus akhiran kata secara kasar.</p></li>
+</ol>
+</section>
+<section id="cleaning-data">
+<h2><strong>Cleaning Data</strong><a class="headerlink" href="#cleaning-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import library</span>
@@ -821,7 +857,7 @@ Cleaning Data</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-53314868-9af1-496d-b0d1-e5a417766da8" class="colab-df-container">
+  <div id="df-a3890120-d4e1-4988-983f-0c80379ae742" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -876,7 +912,7 @@ Cleaning Data</p>
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-53314868-9af1-496d-b0d1-e5a417766da8')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-a3890120-d4e1-4988-983f-0c80379ae742')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -928,12 +964,12 @@ Cleaning Data</p>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-53314868-9af1-496d-b0d1-e5a417766da8 button.colab-df-convert');
+        document.querySelector('#df-a3890120-d4e1-4988-983f-0c80379ae742 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-53314868-9af1-496d-b0d1-e5a417766da8');
+        const element = document.querySelector('#df-a3890120-d4e1-4988-983f-0c80379ae742');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -964,7 +1000,9 @@ Cleaning Data</p>
 </div>
 </div>
 </div>
-<p>###Tokenize</p>
+</section>
+<section id="tokenize">
+<h2><strong>Tokenize</strong><a class="headerlink" href="#tokenize" title="Permalink to this heading">#</a></h2>
 <p>Proses membagi teks menjadi kata</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -980,39 +1018,35 @@ Cleaning Data</p>
 [nltk_data]    | Downloading package cmudict to /root/nltk_data...
 [nltk_data]    |   Unzipping corpora/cmudict.zip.
 [nltk_data]    | Downloading package gazetteers to /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/gazetteers.zip.
+[nltk_data]    |   Unzipping corpora/gazetteers.zip.
 [nltk_data]    | Downloading package genesis to /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/genesis.zip.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/genesis.zip.
 [nltk_data]    | Downloading package gutenberg to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/gutenberg.zip.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/gutenberg.zip.
-[nltk_data]    | Downloading package inaugural to /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/inaugural.zip.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package inaugural to /root/nltk_data...
+[nltk_data]    |   Unzipping corpora/inaugural.zip.
 [nltk_data]    | Downloading package movie_reviews to
 [nltk_data]    |     /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/movie_reviews.zip.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/movie_reviews.zip.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package names to /root/nltk_data...
 [nltk_data]    |   Unzipping corpora/names.zip.
 [nltk_data]    | Downloading package shakespeare to /root/nltk_data...
 [nltk_data]    |   Unzipping corpora/shakespeare.zip.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package stopwords to /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/stopwords.zip.
+[nltk_data]    | Downloading package stopwords to /root/nltk_data...
+[nltk_data]    |   Package stopwords is already up-to-date!
 [nltk_data]    | Downloading package treebank to /root/nltk_data...
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/treebank.zip.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package twitter_samples to
+[nltk_data]    | Downloading package twitter_samples to
 [nltk_data]    |     /root/nltk_data...
 </pre></div>
 </div>
@@ -1024,23 +1058,21 @@ Cleaning Data</p>
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package wordnet to /root/nltk_data...
+[nltk_data]    | Downloading package wordnet2021 to /root/nltk_data...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package wordnet2021 to /root/nltk_data...
-[nltk_data]    | Downloading package wordnet31 to /root/nltk_data...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package wordnet31 to /root/nltk_data...
+[nltk_data]    | Downloading package wordnet_ic to /root/nltk_data...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package wordnet_ic to /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/wordnet_ic.zip.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/wordnet_ic.zip.
+[nltk_data]    | Downloading package words to /root/nltk_data...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package words to /root/nltk_data...
-[nltk_data]    |   Unzipping corpora/words.zip.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping corpora/words.zip.
 [nltk_data]    | Downloading package maxent_ne_chunker to
 [nltk_data]    |     /root/nltk_data...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    |   Unzipping chunkers/maxent_ne_chunker.zip.
+[nltk_data]    |   Unzipping chunkers/maxent_ne_chunker.zip.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data]    | Downloading package punkt to /root/nltk_data...
@@ -1068,7 +1100,7 @@ Cleaning Data</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-97c84881-1acc-465e-a00b-4acdccfd24c5" class="colab-df-container">
+  <div id="df-99f70d58-1745-4938-b27a-82205d550be2" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1123,7 +1155,7 @@ Cleaning Data</p>
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-97c84881-1acc-465e-a00b-4acdccfd24c5')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-99f70d58-1745-4938-b27a-82205d550be2')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1175,12 +1207,12 @@ Cleaning Data</p>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-97c84881-1acc-465e-a00b-4acdccfd24c5 button.colab-df-convert');
+        document.querySelector('#df-99f70d58-1745-4938-b27a-82205d550be2 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-97c84881-1acc-465e-a00b-4acdccfd24c5');
+        const element = document.querySelector('#df-99f70d58-1745-4938-b27a-82205d550be2');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1203,8 +1235,10 @@ Cleaning Data</p>
   </div>
   </div></div>
 </div>
-<p>###Stopword
-Proses menghapus kata yang tidak memiliki makna seperti yang, di, dan, ke dll.</p>
+</section>
+<section id="stopword">
+<h2><strong>Stopword</strong><a class="headerlink" href="#stopword" title="Permalink to this heading">#</a></h2>
+<p>Proses menghapus kata yang tidak memiliki makna seperti yang, di, dan, ke dll.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import library kumpulan kata2 tidak penting</span>
@@ -1255,7 +1289,7 @@ Proses menghapus kata yang tidak memiliki makna seperti yang, di, dan, ke dll.</
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-04ac5709-ca55-4f56-9c95-06ea62697649" class="colab-df-container">
+  <div id="df-ffc61150-b39e-486a-b804-2d3a48ab2544" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1310,7 +1344,7 @@ Proses menghapus kata yang tidak memiliki makna seperti yang, di, dan, ke dll.</
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-04ac5709-ca55-4f56-9c95-06ea62697649')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-ffc61150-b39e-486a-b804-2d3a48ab2544')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1362,12 +1396,12 @@ Proses menghapus kata yang tidak memiliki makna seperti yang, di, dan, ke dll.</
 
     <script>
       const buttonEl =
-        document.querySelector('#df-04ac5709-ca55-4f56-9c95-06ea62697649 button.colab-df-convert');
+        document.querySelector('#df-ffc61150-b39e-486a-b804-2d3a48ab2544 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-04ac5709-ca55-4f56-9c95-06ea62697649');
+        const element = document.querySelector('#df-ffc61150-b39e-486a-b804-2d3a48ab2544');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1390,8 +1424,10 @@ Proses menghapus kata yang tidak memiliki makna seperti yang, di, dan, ke dll.</
   </div>
   </div></div>
 </div>
-<p>###Stemming
-Proses merubah kata berimbuhan menjadi kata dasar
+</section>
+<section id="stemming">
+<h2><strong>Stemming</strong><a class="headerlink" href="#stemming" title="Permalink to this heading">#</a></h2>
+<p>Proses merubah kata berimbuhan menjadi kata dasar
 (Mengubah hasil dari stopword menjadi kata dasar)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1436,7 +1472,7 @@ Proses merubah kata berimbuhan menjadi kata dasar
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-77414447-15ab-44f7-baa5-229ff2954e05" class="colab-df-container">
+  <div id="df-03c95ec5-c33a-4083-9ee4-cd1ae7bd45b6" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1534,7 +1570,7 @@ Proses merubah kata berimbuhan menjadi kata dasar
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-77414447-15ab-44f7-baa5-229ff2954e05')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-03c95ec5-c33a-4083-9ee4-cd1ae7bd45b6')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1586,12 +1622,12 @@ Proses merubah kata berimbuhan menjadi kata dasar
 
     <script>
       const buttonEl =
-        document.querySelector('#df-77414447-15ab-44f7-baa5-229ff2954e05 button.colab-df-convert');
+        document.querySelector('#df-03c95ec5-c33a-4083-9ee4-cd1ae7bd45b6 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-77414447-15ab-44f7-baa5-229ff2954e05');
+        const element = document.querySelector('#df-03c95ec5-c33a-4083-9ee4-cd1ae7bd45b6');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1614,8 +1650,12 @@ Proses merubah kata berimbuhan menjadi kata dasar
   </div>
   </div></div>
 </div>
-<p>###Feature Extraction</p>
-<p>One Hot Encoder</p>
+</section>
+<section id="feature-extraction">
+<h2><strong>Feature Extraction</strong><a class="headerlink" href="#feature-extraction" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="one-hot-encoder">
+<h2><strong>One Hot Encoder</strong><a class="headerlink" href="#one-hot-encoder" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#mengubah variabel kategorikal menjadi representasi numerik biner.</span>
@@ -1908,7 +1948,9 @@ Proses merubah kata berimbuhan menjadi kata dasar
 </div>
 </div>
 </div>
-<p>##Term Frequensi</p>
+</section>
+<section id="term-frequensi">
+<h2><strong>Term Frequensi</strong><a class="headerlink" href="#term-frequensi" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
@@ -1923,7 +1965,7 @@ Proses merubah kata berimbuhan menjadi kata dasar
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-aff15fc2-c67e-40bc-99a6-aa41896a6e0c" class="colab-df-container">
+  <div id="df-59b1aeb2-395e-4799-a9fa-c6fc39843978" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2237,7 +2279,7 @@ Proses merubah kata berimbuhan menjadi kata dasar
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-aff15fc2-c67e-40bc-99a6-aa41896a6e0c')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-59b1aeb2-395e-4799-a9fa-c6fc39843978')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -2289,12 +2331,12 @@ Proses merubah kata berimbuhan menjadi kata dasar
 
     <script>
       const buttonEl =
-        document.querySelector('#df-aff15fc2-c67e-40bc-99a6-aa41896a6e0c button.colab-df-convert');
+        document.querySelector('#df-59b1aeb2-395e-4799-a9fa-c6fc39843978 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-aff15fc2-c67e-40bc-99a6-aa41896a6e0c');
+        const element = document.querySelector('#df-59b1aeb2-395e-4799-a9fa-c6fc39843978');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2317,6 +2359,7 @@ Proses merubah kata berimbuhan menjadi kata dasar
   </div>
   </div></div>
 </div>
+<p>menghitung jumlah kemunculan kata-kata setelah menggunakan CountVectorizer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#menghitung jumlah kemunculan kata</span>
@@ -2354,7 +2397,11 @@ Length: 9099, dtype: int64
 </div>
 </div>
 </div>
-<p>###Log Frekuensi</p>
+</section>
+<section id="log-frekuensi">
+<h2><strong>Log Frekuensi</strong><a class="headerlink" href="#log-frekuensi" title="Permalink to this heading">#</a></h2>
+<p>metode yang melibatkan penggunaan logaritma untuk mengubah skala frekuensi kata-kata dalam suatu dokumen. Tujuannya adalah untuk mengurangi dampak perbedaan besar dalam frekuensi dan memberikan representasi yang lebih seimbang.</p>
+<p>menggunakan TfidfVectorizer dari scikit-learn untuk menghitung Term Frequency (TF) tanpa menggunakan Inverse Document Frequency (IDF).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
@@ -2370,7 +2417,7 @@ Length: 9099, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-58c4a335-883f-469f-9016-36b3c19176e3" class="colab-df-container">
+  <div id="df-36534c0d-ce33-44d9-850d-5109b421b3f7" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2684,7 +2731,7 @@ Length: 9099, dtype: int64
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-58c4a335-883f-469f-9016-36b3c19176e3')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-36534c0d-ce33-44d9-850d-5109b421b3f7')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -2736,12 +2783,12 @@ Length: 9099, dtype: int64
 
     <script>
       const buttonEl =
-        document.querySelector('#df-58c4a335-883f-469f-9016-36b3c19176e3 button.colab-df-convert');
+        document.querySelector('#df-36534c0d-ce33-44d9-850d-5109b421b3f7 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-58c4a335-883f-469f-9016-36b3c19176e3');
+        const element = document.querySelector('#df-36534c0d-ce33-44d9-850d-5109b421b3f7');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2764,6 +2811,7 @@ Length: 9099, dtype: int64
   </div>
   </div></div>
 </div>
+<p>menghitung jumlah kemunculan kata-kata setelah menggunakan TfidfVectorizer dengan use_idf=False (sehingga hanya menghitung Term Frequency tanpa IDF) dan parameter lainnya.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">token_counts</span> <span class="o">=</span> <span class="n">df_log</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -2800,7 +2848,11 @@ Length: 9099, dtype: float64
 </div>
 </div>
 </div>
-<p>###Binary Frekuensi</p>
+</section>
+<section id="binary-frekuensi">
+<h2><strong>Binary Frekuensi</strong><a class="headerlink" href="#binary-frekuensi" title="Permalink to this heading">#</a></h2>
+<p>metode representasi di mana kita hanya memperhatikan keberadaan atau ketiadaan suatu kata dalam suatu dokumen, tanpa memperhitungkan berapa kali kata tersebut muncul. Representasi ini menghasilkan matriks biner di mana nilai setiap elemen dapat menjadi 0 (tidak ada) atau 1 (ada).</p>
+<p>menggunakan CountVectorizer dari scikit-learn dengan parameter binary=True untuk membuat representasi binary frequency atau binary term presence dari dokumen-dokumen dalam kolom ‘Abstrak’.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
@@ -2815,7 +2867,7 @@ Length: 9099, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-b7ba1662-12a0-46cc-a2c6-86c468f556d4" class="colab-df-container">
+  <div id="df-1fac5d8a-b15c-48ac-9176-283fcdc36fde" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3129,7 +3181,7 @@ Length: 9099, dtype: float64
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-b7ba1662-12a0-46cc-a2c6-86c468f556d4')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-1fac5d8a-b15c-48ac-9176-283fcdc36fde')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -3181,12 +3233,12 @@ Length: 9099, dtype: float64
 
     <script>
       const buttonEl =
-        document.querySelector('#df-b7ba1662-12a0-46cc-a2c6-86c468f556d4 button.colab-df-convert');
+        document.querySelector('#df-1fac5d8a-b15c-48ac-9176-283fcdc36fde button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-b7ba1662-12a0-46cc-a2c6-86c468f556d4');
+        const element = document.querySelector('#df-1fac5d8a-b15c-48ac-9176-283fcdc36fde');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3209,6 +3261,7 @@ Length: 9099, dtype: float64
   </div>
   </div></div>
 </div>
+<p>menghitung jumlah kemunculan kata-kata dalam representasi binary frequency (df_vsm_binary)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#jumlah kata yang muncul</span>
@@ -3247,6 +3300,7 @@ Length: 9099, dtype: int64
 </div>
 </div>
 <p>Pemodelan LDA</p>
+<p>mengimpor pustaka pandas dan menggunakan modul warnings untuk mengabaikan pesan peringatan.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -3256,6 +3310,7 @@ Length: 9099, dtype: int64
 </div>
 </div>
 </div>
+<p>melakukan analisis topic modeling menggunakan metode Latent Dirichlet Allocation (LDA).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
@@ -3309,7 +3364,7 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-86dd557f-8c06-448d-808d-8b60a1a60570" class="colab-df-container">
+  <div id="df-f8b26c7d-9b83-4d69-b034-7319ac69c2c7" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3354,99 +3409,99 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
   <tbody>
     <tr>
       <th>Topik 1</th>
-      <td>0.20955</td>
-      <td>6.018096</td>
-      <td>1.2</td>
       <td>0.200000</td>
-      <td>6.870159</td>
-      <td>0.200000</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.211399</td>
+      <td>4.365708</td>
       <td>0.2</td>
       <td>0.200000</td>
       <td>0.2</td>
-      <td>0.20000</td>
+      <td>0.200000</td>
+      <td>0.2</td>
       <td>...</td>
-      <td>0.780554</td>
-      <td>0.207212</td>
-      <td>5.851814</td>
       <td>0.2</td>
-      <td>0.201957</td>
-      <td>0.203757</td>
-      <td>0.202627</td>
-      <td>0.206695</td>
+      <td>0.2</td>
+      <td>4.493100</td>
+      <td>0.2</td>
+      <td>2.200002</td>
       <td>0.200000</td>
-      <td>1.198452</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
     </tr>
     <tr>
       <th>Topik 2</th>
-      <td>0.20000</td>
-      <td>1.314665</td>
-      <td>0.2</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.2</td>
-      <td>2.199778</td>
-      <td>0.2</td>
-      <td>2.19492</td>
-      <td>...</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
-      <td>0.200000</td>
+      <td>0.202214</td>
+      <td>7.2</td>
       <td>1.2</td>
+      <td>1.361320</td>
+      <td>14.781009</td>
+      <td>1.2</td>
+      <td>1.152738</td>
+      <td>2.2</td>
+      <td>4.189691</td>
+      <td>0.2</td>
+      <td>...</td>
+      <td>2.2</td>
+      <td>3.2</td>
+      <td>7.031737</td>
+      <td>0.2</td>
       <td>0.200000</td>
-      <td>0.214826</td>
-      <td>0.200000</td>
-      <td>0.202974</td>
-      <td>1.199068</td>
-      <td>0.200000</td>
+      <td>1.265613</td>
+      <td>1.2</td>
+      <td>3.2</td>
+      <td>0.717303</td>
+      <td>1.095128</td>
     </tr>
     <tr>
       <th>Topik 3</th>
-      <td>0.20000</td>
-      <td>0.265976</td>
+      <td>1.195347</td>
       <td>0.2</td>
-      <td>2.198836</td>
-      <td>14.575458</td>
-      <td>0.200365</td>
-      <td>1.2</td>
-      <td>0.200000</td>
       <td>0.2</td>
-      <td>0.20000</td>
+      <td>1.027281</td>
+      <td>10.451172</td>
+      <td>0.2</td>
+      <td>0.247262</td>
+      <td>0.2</td>
+      <td>0.210309</td>
+      <td>2.2</td>
       <td>...</td>
-      <td>0.200000</td>
-      <td>1.192788</td>
-      <td>0.200024</td>
       <td>0.2</td>
-      <td>1.200000</td>
-      <td>1.181586</td>
+      <td>0.2</td>
+      <td>6.070130</td>
+      <td>1.2</td>
+      <td>1.199998</td>
+      <td>2.134387</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.682697</td>
       <td>0.200000</td>
-      <td>2.196847</td>
-      <td>0.200276</td>
-      <td>0.201548</td>
     </tr>
     <tr>
       <th>Topik 4</th>
-      <td>1.19045</td>
-      <td>0.201263</td>
+      <td>0.202439</td>
       <td>0.2</td>
-      <td>0.201164</td>
-      <td>8.154383</td>
-      <td>1.199635</td>
       <td>0.2</td>
-      <td>0.200222</td>
-      <td>4.2</td>
-      <td>0.20508</td>
-      <td>...</td>
-      <td>1.619446</td>
-      <td>2.200000</td>
-      <td>11.548162</td>
-      <td>0.2</td>
-      <td>2.198043</td>
-      <td>2.199831</td>
-      <td>1.197373</td>
-      <td>1.193484</td>
-      <td>0.200656</td>
       <td>0.200000</td>
+      <td>0.202111</td>
+      <td>0.2</td>
+      <td>0.200000</td>
+      <td>0.2</td>
+      <td>0.200000</td>
+      <td>0.2</td>
+      <td>...</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.205033</td>
+      <td>0.2</td>
+      <td>0.200000</td>
+      <td>0.200000</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.200000</td>
+      <td>0.304872</td>
     </tr>
   </tbody>
 </table>
@@ -3455,7 +3510,7 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-86dd557f-8c06-448d-808d-8b60a1a60570')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-f8b26c7d-9b83-4d69-b034-7319ac69c2c7')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -3507,12 +3562,12 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 
     <script>
       const buttonEl =
-        document.querySelector('#df-86dd557f-8c06-448d-808d-8b60a1a60570 button.colab-df-convert');
+        document.querySelector('#df-f8b26c7d-9b83-4d69-b034-7319ac69c2c7 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-86dd557f-8c06-448d-808d-8b60a1a60570');
+        const element = document.querySelector('#df-f8b26c7d-9b83-4d69-b034-7319ac69c2c7');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3558,7 +3613,7 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-690ded14-f7ca-475c-8dba-461c209d0c5d" class="colab-df-container">
+  <div id="df-5ec66154-d05b-4561-926c-c9d6b5bd2b2f" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3588,42 +3643,42 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
     <tr>
       <th>0</th>
       <td>OPTIMASI PEMILIHAN PORTOFOLIO SAHAM PERUSAHAAN...</td>
-      <td>0.109640</td>
       <td>0.000594</td>
-      <td>0.889172</td>
+      <td>0.998218</td>
+      <td>0.000594</td>
       <td>0.000594</td>
     </tr>
     <tr>
       <th>1</th>
       <td>PERANCANGAN TATA LETAK FASILITAS LANTAI PRODUK...</td>
       <td>0.000739</td>
+      <td>0.580370</td>
+      <td>0.418153</td>
       <td>0.000739</td>
-      <td>0.654628</td>
-      <td>0.343894</td>
     </tr>
     <tr>
       <th>2</th>
       <td>PERUMUSAN STRATEGI BISNIS UD. BUDI JAYA BANGKA...</td>
-      <td>0.306602</td>
-      <td>0.077267</td>
-      <td>0.615453</td>
       <td>0.000679</td>
+      <td>0.997964</td>
+      <td>0.000679</td>
+      <td>0.000678</td>
     </tr>
     <tr>
       <th>3</th>
       <td>USULAN PERBAIKAN UTILITAS RESOURCES PADA LANTA...</td>
       <td>0.000693</td>
+      <td>0.473821</td>
+      <td>0.524794</td>
       <td>0.000693</td>
-      <td>0.000693</td>
-      <td>0.997922</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Peningkatan Kepuasan Masyarakat Terhadap Pelay...</td>
-      <td>0.376158</td>
+      <td>0.000456</td>
+      <td>0.998632</td>
       <td>0.000456</td>
       <td>0.000456</td>
-      <td>0.622930</td>
     </tr>
     <tr>
       <th>...</th>
@@ -3636,42 +3691,42 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
     <tr>
       <th>705</th>
       <td>PENENTUAN LOKASI PENGELOMPOKAN TANI GARAM  DI ...</td>
-      <td>0.235713</td>
-      <td>0.366221</td>
-      <td>0.397167</td>
+      <td>0.000898</td>
+      <td>0.997306</td>
+      <td>0.000898</td>
       <td>0.000898</td>
     </tr>
     <tr>
       <th>706</th>
       <td>USULAN PERBAIKAN UPAYA MINIMASI REJECT PART BO...</td>
-      <td>0.000811</td>
-      <td>0.000811</td>
+      <td>0.000810</td>
       <td>0.000811</td>
       <td>0.997568</td>
+      <td>0.000810</td>
     </tr>
     <tr>
       <th>707</th>
       <td>PERENCANAAN KEBIJAKAN PENGENDALIAN PERSEDIAA...</td>
       <td>0.000434</td>
+      <td>0.998698</td>
       <td>0.000434</td>
-      <td>0.126853</td>
-      <td>0.872278</td>
+      <td>0.000434</td>
     </tr>
     <tr>
       <th>708</th>
       <td>PENGEMBANGAN DAN KARAKTERISASI HASIL ASSESSMEN...</td>
+      <td>0.656935</td>
+      <td>0.065206</td>
+      <td>0.277411</td>
       <td>0.000448</td>
-      <td>0.567963</td>
-      <td>0.000448</td>
-      <td>0.431141</td>
     </tr>
     <tr>
       <th>709</th>
       <td>Evaluasi Tingkat Kelelahan Kerja Perawat Ruang...</td>
       <td>0.000590</td>
+      <td>0.059279</td>
+      <td>0.939541</td>
       <td>0.000590</td>
-      <td>0.000590</td>
-      <td>0.998229</td>
     </tr>
   </tbody>
 </table>
@@ -3680,7 +3735,7 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-690ded14-f7ca-475c-8dba-461c209d0c5d')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-5ec66154-d05b-4561-926c-c9d6b5bd2b2f')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -3732,12 +3787,12 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 
     <script>
       const buttonEl =
-        document.querySelector('#df-690ded14-f7ca-475c-8dba-461c209d0c5d button.colab-df-convert');
+        document.querySelector('#df-5ec66154-d05b-4561-926c-c9d6b5bd2b2f button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-690ded14-f7ca-475c-8dba-461c209d0c5d');
+        const element = document.querySelector('#df-5ec66154-d05b-4561-926c-c9d6b5bd2b2f');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3804,7 +3859,7 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-5bf58209-f1e2-4a5a-90de-46b9a7d691d4" class="colab-df-container">
+  <div id="df-67488e5f-27ba-4fad-a63f-d4c23a02702c" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3834,23 +3889,23 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
       <td>0</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>Peningkatan Kepuasan Masyarakat Terhadap Pelay...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Perencanaan Penjadwalan Dan Rute Terpendek Dis...</td>
-      <td>0</td>
-    </tr>
-    <tr>
       <th>6</th>
       <td>USULAN PERBAIKAN PADA PROSES PRODUKSI BOTOL KA...</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>Pengaruh analisa jabatan terhadap motivasi ker...</td>
+      <th>7</th>
+      <td>PERENCANAAN AGREGAT PRODUKSI PLYWOOD DENGAN TE...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Pendekatan Quality Risk Management (QRM) Untuk...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Analisis Pengendalian dan Perbaikan Kualitas d...</td>
       <td>0</td>
     </tr>
     <tr>
@@ -3859,18 +3914,18 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
       <td>...</td>
     </tr>
     <tr>
-      <th>702</th>
-      <td>Pengaruh Kepuasan Kerja dan Disiplin Kerja Ter...</td>
+      <th>701</th>
+      <td>USULAN PERBAIKAN PADA PROSES PRODUKSI PLASTIC ...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>704</th>
+      <td>PENGEMBANGAN DAN KARAKTERISASI INSTRUMEN ESMOC...</td>
       <td>0</td>
     </tr>
     <tr>
       <th>706</th>
       <td>USULAN PERBAIKAN UPAYA MINIMASI REJECT PART BO...</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>707</th>
-      <td>PERENCANAAN KEBIJAKAN PENGENDALIAN PERSEDIAA...</td>
       <td>0</td>
     </tr>
     <tr>
@@ -3885,12 +3940,12 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
     </tr>
   </tbody>
 </table>
-<p>295 rows × 2 columns</p>
+<p>236 rows × 2 columns</p>
 </div>
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-5bf58209-f1e2-4a5a-90de-46b9a7d691d4')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-67488e5f-27ba-4fad-a63f-d4c23a02702c')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -3942,12 +3997,12 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 
     <script>
       const buttonEl =
-        document.querySelector('#df-5bf58209-f1e2-4a5a-90de-46b9a7d691d4 button.colab-df-convert');
+        document.querySelector('#df-67488e5f-27ba-4fad-a63f-d4c23a02702c button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-5bf58209-f1e2-4a5a-90de-46b9a7d691d4');
+        const element = document.querySelector('#df-67488e5f-27ba-4fad-a63f-d4c23a02702c');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3972,7 +4027,7 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-528d2e4b-da90-4bbd-a779-15fa3796e1cf" class="colab-df-container">
+  <div id="df-c3e42ad2-9ad8-4b81-82bc-edbb89ee9ccb" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -4012,13 +4067,13 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
       <td>1</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>PERENCANAAN AGREGAT PRODUKSI PLYWOOD DENGAN TE...</td>
+      <th>4</th>
+      <td>Peningkatan Kepuasan Masyarakat Terhadap Pelay...</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>12</th>
-      <td>Identifikasi Preferensi Konsumen Dalam Minat B...</td>
+      <th>5</th>
+      <td>Perencanaan Penjadwalan Dan Rute Terpendek Dis...</td>
       <td>1</td>
     </tr>
     <tr>
@@ -4027,13 +4082,13 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
       <td>...</td>
     </tr>
     <tr>
-      <th>699</th>
-      <td>PENDEKATAN BACKPROPAGATION NEURAL NETWORK UNTU...</td>
+      <th>700</th>
+      <td>ANALISIS PENGARUH LINGKUNGAN KERJA DAN \nMOTIV...</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>701</th>
-      <td>USULAN PERBAIKAN PADA PROSES PRODUKSI PLASTIC ...</td>
+      <th>702</th>
+      <td>Pengaruh Kepuasan Kerja dan Disiplin Kerja Ter...</td>
       <td>1</td>
     </tr>
     <tr>
@@ -4042,23 +4097,23 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
       <td>1</td>
     </tr>
     <tr>
-      <th>704</th>
-      <td>PENGEMBANGAN DAN KARAKTERISASI INSTRUMEN ESMOC...</td>
-      <td>1</td>
-    </tr>
-    <tr>
       <th>705</th>
       <td>PENENTUAN LOKASI PENGELOMPOKAN TANI GARAM  DI ...</td>
       <td>1</td>
     </tr>
+    <tr>
+      <th>707</th>
+      <td>PERENCANAAN KEBIJAKAN PENGENDALIAN PERSEDIAA...</td>
+      <td>1</td>
+    </tr>
   </tbody>
 </table>
-<p>415 rows × 2 columns</p>
+<p>474 rows × 2 columns</p>
 </div>
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-528d2e4b-da90-4bbd-a779-15fa3796e1cf')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-c3e42ad2-9ad8-4b81-82bc-edbb89ee9ccb')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -4110,12 +4165,12 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
 
     <script>
       const buttonEl =
-        document.querySelector('#df-528d2e4b-da90-4bbd-a779-15fa3796e1cf button.colab-df-convert');
+        document.querySelector('#df-c3e42ad2-9ad8-4b81-82bc-edbb89ee9ccb button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-528d2e4b-da90-4bbd-a779-15fa3796e1cf');
+        const element = document.querySelector('#df-c3e42ad2-9ad8-4b81-82bc-edbb89ee9ccb');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -4138,8 +4193,11 @@ Latent Dirichlet Allocation (LDA) adalah sebuah model probabilistik yang digunak
   </div>
   </div></div>
 </div>
-<p>###TF-IDF
-menghitung kemunculan term(kata) dari dokumen teks menggunakan library scikit-learn.</p>
+</section>
+<section id="tf-idf">
+<h2><strong>TF-IDF</strong><a class="headerlink" href="#tf-idf" title="Permalink to this heading">#</a></h2>
+<p>menghitung kemunculan term(kata) dari dokumen teks menggunakan library scikit-learn.</p>
+<p>menggunakan modul TfidfVectorizer dari scikit-learn (sklearn) untuk mengonversi teks dalam kolom ‘Abstrak’ suatu DataFrame menjadi representasi numerik dengan skema TF-IDF (Term Frequency-Inverse Document Frequency)`</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
@@ -4156,7 +4214,7 @@ menghitung kemunculan term(kata) dari dokumen teks menggunakan library scikit-le
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-67d7cc50-05f0-4545-a8de-849b91109dd6" class="colab-df-container">
+  <div id="df-5dde6992-30d5-4063-b2c9-500128596268" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -4470,7 +4528,7 @@ menghitung kemunculan term(kata) dari dokumen teks menggunakan library scikit-le
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-67d7cc50-05f0-4545-a8de-849b91109dd6')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-5dde6992-30d5-4063-b2c9-500128596268')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -4522,12 +4580,12 @@ menghitung kemunculan term(kata) dari dokumen teks menggunakan library scikit-le
 
     <script>
       const buttonEl =
-        document.querySelector('#df-67d7cc50-05f0-4545-a8de-849b91109dd6 button.colab-df-convert');
+        document.querySelector('#df-5dde6992-30d5-4063-b2c9-500128596268 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-67d7cc50-05f0-4545-a8de-849b91109dd6');
+        const element = document.querySelector('#df-5dde6992-30d5-4063-b2c9-500128596268');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -4550,6 +4608,7 @@ menghitung kemunculan term(kata) dari dokumen teks menggunakan library scikit-le
   </div>
   </div></div>
 </div>
+<p>Menyimpan hasil TF-IDF</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_tfidfvect</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Dt_Tf-Idf.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -4557,6 +4616,7 @@ menghitung kemunculan term(kata) dari dokumen teks menggunakan library scikit-le
 </div>
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -4599,7 +4659,7 @@ menghitung kemunculan term(kata) dari dokumen teks menggunakan library scikit-le
       </div>
     </a>
     <a class="right-next"
-       href="Crawling_Berita.html"
+       href="DataCrawling_Berita.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -4613,6 +4673,31 @@ menghitung kemunculan term(kata) dari dokumen teks menggunakan library scikit-le
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data"><strong>Preprocessing Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-data"><strong>Cleaning Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenize"><strong>Tokenize</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword"><strong>Stopword</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming"><strong>Stemming</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-extraction"><strong>Feature Extraction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoder"><strong>One Hot Encoder</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-frequensi"><strong>Term Frequensi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-frekuensi"><strong>Log Frekuensi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-frekuensi"><strong>Binary Frekuensi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf"><strong>TF-IDF</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
