@@ -22,7 +22,7 @@ dtsummary
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m<ipython-input-26-83386b9b2567>[0m in [0;36m<cell line: 1>[0;34m()[0m
+[0;32m<ipython-input-27-83386b9b2567>[0m in [0;36m<cell line: 1>[0;34m()[0m
 [0;32m----> 1[0;31m [0mdtsummary[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0;34m"/content/Datasummary-Beritasatu.csv"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      2[0m [0mdtsummary[0m[0;34m[0m[0;34m[0m[0m
 
